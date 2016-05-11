@@ -1,0 +1,8 @@
+/ConnectionEvent.class
+/ConnectionListener.class
+/QueryExecuteEvent.class
+/ResultChangedEvent.class
+/HistoryChangedEvent.class
+/HistoryChangedListener.class
+/QueryExecuteListener.class
+/ResultChangedListener.class

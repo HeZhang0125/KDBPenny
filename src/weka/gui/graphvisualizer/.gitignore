@@ -1,0 +1,17 @@
+/BIFParser.class
+/DotParser.class
+/GraphEdge.class
+/GraphNode.class
+/LayoutEngine.class
+/BIFFormatException.class
+/GraphConstants.class
+/GraphVisualizer$GraphPanel.class
+/GraphVisualizer$GraphVisualizerMouseListener.class
+/GraphVisualizer$GraphVisualizerMouseMotionListener.class
+/GraphVisualizer$GraphVisualizerTableModel.class
+/GraphVisualizer.class
+/HierarchicalBCEngine$MyList.class
+/HierarchicalBCEngine$MyListNode.class
+/HierarchicalBCEngine.class
+/LayoutCompleteEvent.class
+/LayoutCompleteEventListener.class

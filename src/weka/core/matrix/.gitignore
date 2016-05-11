@@ -1,0 +1,13 @@
+/Maths.class
+/Matrix.class
+/IntVector.class
+/DoubleVector.class
+/LUDecomposition.class
+/QRDecomposition.class
+/ExponentialFormat.class
+/FloatingPointFormat.class
+/LinearRegression.class
+/CholeskyDecomposition.class
+/EigenvalueDecomposition.class
+/FlexibleDecimalFormat.class
+/SingularValueDecomposition.class
