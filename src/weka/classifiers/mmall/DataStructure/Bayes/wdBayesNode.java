@@ -1,5 +1,7 @@
 package weka.classifiers.mmall.DataStructure.Bayes;
 
+import Penny.Concentration;
+
 /*
 * wdBayesNode - Node of Tree, storing discriminative parameters
 *  
@@ -19,6 +21,7 @@ public class wdBayesNode {
 	public int paramsPerAttVal;
 
 	public int scheme;
+	public Concentration c;
 
 	// default constructor - init must be called after construction
 	public wdBayesNode(int s1) {

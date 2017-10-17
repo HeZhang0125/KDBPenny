@@ -26,6 +26,7 @@
 
 package weka.classifiers.mmall.DataStructure;
 
+import weka.classifiers.mmall.Utils.SUtils;
 import weka.core.Instance;
 import weka.core.Instances;
 import Penny.KDBPenny;
@@ -84,25 +85,25 @@ public class xyDist {
 
 	public void countsToProbs() {
 
-		classProbs_ = new double[nc];
-		probs_ = new double[n][];
-
-		for (int u1 = 0; u1 < n; u1++) {
-			probs_[u1] = new double[paramsPerAtt[u1] * nc];
-		}
-
-		for (int c = 0; c < nc; c++) {
-			classProbs_[c] = KDBPenny.laplace(classCounts_[c], N, nc);
-		}
-
-		for (int c = 0; c < nc; c++) {
-			for (int u = 0; u < n; u++) {				
-				for (int uval = 0; uval < paramsPerAtt[u]; uval++) {
-					int pos = uval*nc + c;
-					probs_[u][pos] = KDBPenny.laplace(counts_[u][pos], classCounts_[c], paramsPerAtt[u]);
-				}				
-			}
-		}
+//		classProbs_ = new double[nc];
+//		probs_ = new double[n][];
+//
+//		for (int u1 = 0; u1 < n; u1++) {
+//			probs_[u1] = new double[paramsPerAtt[u1] * nc];
+//		}
+//
+//		for (int c = 0; c < nc; c++) {
+//			classProbs_[c] = KDBPenny.laplace(classCounts_[c], N, nc);
+//		}
+//
+//		for (int c = 0; c < nc; c++) {
+//			for (int u = 0; u < n; u++) {				
+//				for (int uval = 0; uval < paramsPerAtt[u]; uval++) {
+//					int pos = uval*nc + c;
+//					probs_[u][pos] = KDBPenny.laplace(counts_[u][pos], classCounts_[c], paramsPerAtt[u]);
+//				}				
+//			}
+//		}
 	}
 	
 	public double[] getClassProbs() {
@@ -113,8 +114,8 @@ public class xyDist {
 	public double p(int u1, int u1val, int y) {
 		//return mEstimate(counts_[a][v*noOfClasses_+y], classCounts.get(y), paramsPerAtt[a]);
 		int pos = u1val*nc + y;
-//		return SUtils.MEsti(counts_[u1][pos], classCounts_[y], paramsPerAtt[u1]);
-		return KDBPenny.laplace(counts_[u1][pos], classCounts_[y], paramsPerAtt[u1]);
+		return SUtils.MEsti(counts_[u1][pos], classCounts_[y], paramsPerAtt[u1]);
+//		return KDBPenny.laplace(counts_[u1][pos], classCounts_[y], paramsPerAtt[u1]);
 	}
 
 	public double pp(int u1, int u1val, int y) {
@@ -126,8 +127,8 @@ public class xyDist {
 	// p(Y=y) using M-estimate
 	public double p(int y) {
 		//return (classCounts[y]+M/metaData_->getNoClasses())/(count+M);
-//		return SUtils.MEsti(classCounts_[y], N, nc); 
-		return KDBPenny.laplace(classCounts_[y], N, nc); 
+		return SUtils.MEsti(classCounts_[y], N, nc); 
+//		return KDBPenny.laplace(classCounts_[y], N, nc); 
 	}
 
 	public double pp(int y) {
@@ -138,14 +139,15 @@ public class xyDist {
 	// p(a=v)
 	public double p(int u1, int u1val) {
 		//return (getCount(a,v)+M/(metaData_->getNoValues(a)))/(count+M);
-//		return SUtils.MEsti(getCount(u1,u1val), N, paramsPerAtt[u1]);
-		return KDBPenny.laplace(getCount(u1,u1val), N, paramsPerAtt[u1]);
+		return SUtils.MEsti(getCount(u1,u1val), N, paramsPerAtt[u1]);
+//		return KDBPenny.laplace(getCount(u1,u1val), N, paramsPerAtt[u1]);
 	}
 
 	// p(a=v, Y=y) 
 	public double jointP(int u1, int u1val, int y) {
 		int pos = u1val*nc + y;
-		return KDBPenny.laplace(counts_[u1][pos], N, paramsPerAtt[u1] * nc);
+		return (double)counts_[u1][pos]/N;
+//		return KDBPenny.laplace(counts_[u1][pos], N, paramsPerAtt[u1] * nc);
 	}
 	public double jointP(){
 		double a=0;

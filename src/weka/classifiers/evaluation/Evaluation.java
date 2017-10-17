@@ -2362,6 +2362,10 @@ public class Evaluation implements Summarizable, RevisionHandler, Serializable {
     }
   }
 
+  public final double bestN0(){
+	  
+	  return 1;
+  }
   /**
    * Returns value of kappa statistic if class is nominal.
    * 

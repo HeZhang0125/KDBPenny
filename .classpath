@@ -2,8 +2,6 @@
 <classpath>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
-	<classpathentry kind="lib" path="C:/workspace/KDBPenny/lib/commons-math-2.2.jar"/>
-	<classpathentry kind="lib" path="C:/workspace/KDBPenny/lib/commons-math3-3.2.jar"/>
 	<classpathentry kind="lib" path="C:/workspace/KDBPenny/lib/java-cup.jar"/>
 	<classpathentry kind="lib" path="C:/workspace/KDBPenny/lib/jayes.jar"/>
 	<classpathentry kind="lib" path="C:/workspace/KDBPenny/lib/jblas-1.2.3.jar"/>
@@ -13,5 +11,7 @@
 	<classpathentry kind="lib" path="C:/workspace/KDBPenny/lib/jxl.jar"/>
 	<classpathentry kind="lib" path="C:/workspace/KDBPenny/lib/lbfgsb_wrapper-1.0.1.jar"/>
 	<classpathentry kind="lib" path="C:/workspace/KDBPenny/lib/packageManager.jar"/>
+	<classpathentry kind="lib" path="C:/workspace/KDBPenny/lib/commons-math3-3.6.1.jar"/>
+	<classpathentry kind="lib" path="C:/workspace/KDBPenny/lib/commons-math3-3.6.1-sources.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

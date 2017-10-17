@@ -26,6 +26,7 @@
 
 package weka.classifiers.mmall.DataStructure;
 
+import weka.classifiers.mmall.Utils.SUtils;
 import weka.core.Instance;
 import weka.core.Instances;
 import Penny.KDBPenny;
@@ -126,12 +127,12 @@ public class xxyDist {
 
 							int pos3 = (paramsPerAtt[u2] * nc) + (u2val*nc + c);
 							
-							probs_[u1][pos1][pos2] = KDBPenny.laplace(ref(u1,u1val,u2,u2val,c), 
-									xyDist_.getCount(u2,u2val,c), 
-									paramsPerAtt[u1]);							
-							probs_[u1][pos1][pos3] = KDBPenny.laplace(ref(u1,u1val,u2,u2val,c), 
-									xyDist_.getCount(u1,u1val,c), 
-									paramsPerAtt[u2]);
+//							probs_[u1][pos1][pos2] = KDBPenny.laplace(ref(u1,u1val,u2,u2val,c), 
+//									xyDist_.getCount(u2,u2val,c), 
+//									paramsPerAtt[u1]);							
+//							probs_[u1][pos1][pos3] = KDBPenny.laplace(ref(u1,u1val,u2,u2val,c), 
+//									xyDist_.getCount(u1,u1val,c), 
+//									paramsPerAtt[u2]);
 						}
 					}
 				}
@@ -172,9 +173,9 @@ public class xxyDist {
 //							probs_[u1][pos1][pos2] = Math.max(SUtils.MEsti(ref(u1,u1val,u2,u2val,c), 
 //									xyDist_.getClassCount(c), 
 //									paramsPerAtt[u1]*paramsPerAtt[u2]), 1e-75);
-							probs_[u1][pos1][pos2] = KDBPenny.laplace(ref(u1,u1val,u2,u2val,c), 
-									xyDist_.getClassCount(c), 
-									paramsPerAtt[u1]*paramsPerAtt[u2]);
+//							probs_[u1][pos1][pos2] = KDBPenny.laplace(ref(u1,u1val,u2,u2val,c), 
+//									xyDist_.getClassCount(c), 
+//									paramsPerAtt[u1]*paramsPerAtt[u2]);
 						}
 					}
 				}
@@ -191,20 +192,20 @@ public class xxyDist {
 	// p(x1=v1, x2=v2, Y=y) 
 	public double jointP(int x1, int v1, int x2, int v2, int y) {
 		//return (*constRef(x1,v1,x2,v2,y)+M/(metaData_->getNoValues(x1)*metaData_->getNoValues(x2)*noOfClasses_))/(xyCounts.count+M);
-//		return SUtils.MEsti(ref(x1,v1,x2,v2,y), N,  paramsPerAtt[x1] * paramsPerAtt[x2] * nc); 
-		return KDBPenny.laplace(ref(x1,v1,x2,v2,y), N,  paramsPerAtt[x1] * paramsPerAtt[x2] * nc); 
+		return SUtils.MEsti(ref(x1,v1,x2,v2,y), N,  paramsPerAtt[x1] * paramsPerAtt[x2] * nc); 
+//		return KDBPenny.laplace(ref(x1,v1,x2,v2,y), N,  paramsPerAtt[x1] * paramsPerAtt[x2] * nc); 
 	}
 
 	// p(x1=v1, x2=v2) 
 	public double jointP(int x1, int v1, int x2, int v2) {
-//		return SUtils.MEsti(getCount(x1,v1,x2,v2), N, paramsPerAtt[x1] * paramsPerAtt[x2]);
-		return KDBPenny.laplace(getCount(x1,v1,x2,v2), N, paramsPerAtt[x1] * paramsPerAtt[x2]);
+		return SUtils.MEsti(getCount(x1,v1,x2,v2), N, paramsPerAtt[x1] * paramsPerAtt[x2]);
+//		return KDBPenny.laplace(getCount(x1,v1,x2,v2), N, paramsPerAtt[x1] * paramsPerAtt[x2]);
 	}
 
 	// p(x1=v1|Y=y, x2=v2) 
 	public double p(int x1, int v1, int x2, int v2, int y) {
-//		return SUtils.MEsti(ref(x1,v1,x2,v2,y), xyDist_.getCount(x2,v2,y), paramsPerAtt[x1]); 
-		return KDBPenny.laplace(ref(x1,v1,x2,v2,y), xyDist_.getCount(x2,v2,y), paramsPerAtt[x1]); 
+		return SUtils.MEsti(ref(x1,v1,x2,v2,y), xyDist_.getCount(x2,v2,y), paramsPerAtt[x1]); 
+//		return KDBPenny.laplace(ref(x1,v1,x2,v2,y), xyDist_.getCount(x2,v2,y), paramsPerAtt[x1]); 
 		
 	}
 

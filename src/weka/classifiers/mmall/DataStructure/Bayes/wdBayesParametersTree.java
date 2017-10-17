@@ -27,6 +27,8 @@ public class wdBayesParametersTree {
 
 	public int scheme;
 	double[][] parentProbs;
+	
+	public static double m_M = 0.5;
 	/**
 	 * Constructor called by wdBayes
 	 */
@@ -146,7 +148,7 @@ public class wdBayesParametersTree {
 					for (int dval = 0; dval < m_ParamsPerAtt[u]; dval++) {
 						denom += tempArray[dval][y];
 					}
-					double prob = KDBPenny.laplace(tempArray[uval][y], denom, m_ParamsPerAtt[u]);
+					double prob = laplace(tempArray[uval][y], denom, m_ParamsPerAtt[u]);
 					pt.setXYProbability(uval, y, prob);
 				}
 			}
@@ -170,7 +172,7 @@ public class wdBayesParametersTree {
 						denom += tempArray[dval][y];
 					}
 
-					double prob = KDBPenny.laplace(tempArray[uval][y], denom, m_ParamsPerAtt[u]);
+					double prob = laplace(tempArray[uval][y], denom, m_ParamsPerAtt[u]);
 					pt.setXYProbability(uval, y, prob);
 				}
 			}
@@ -714,5 +716,8 @@ public class wdBayesParametersTree {
 		// System.out.println();
 		// }
 		// }
+	}
+	public static double laplace(double freq1, double freq2, double numValues) {
+		return (freq1 + m_M) / (freq2 + m_M * numValues);
 	}
 }
